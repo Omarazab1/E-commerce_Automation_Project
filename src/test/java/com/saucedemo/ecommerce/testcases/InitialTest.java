@@ -14,3 +14,4 @@ public class InitialTest extends BaseTest {
         Assert.assertEquals(pageTitle, "Swag Labs", "Error occurs Please try again");
     }
 }
+
