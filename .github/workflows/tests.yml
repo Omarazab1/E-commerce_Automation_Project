@@ -4,15 +4,19 @@ on:
   push:
     branches: [ "main", "master" ]
 
+
+
+permissions:
+  contents: write
+
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 3. تجهيز دبيئة الـ Java (JDK 21) نفس إصدار جهازك
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
@@ -20,15 +24,30 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 4. تفعيل وضع الـ Headless إجباري على السيرفر لتشغيل المتصفح في الخلفية
       - name: Run Selenium Tests via Maven
         run: mvn test -Dheadless=true
 
-      # 5. رفع نتائج Allure كـ Artifact عشان متضيعش بعد ما التست يخلص
-      - name: Upload Allure Results
-        if: always() # يشتغل حتى لو التستات سقطت عشان تشوف التقرير
-        uses: actions/upload-artifact@v4
+
+      - name: Get Allure History
+        uses: actions/checkout@v4
+        if: always()
         with:
-          name: allure-results
-          path: allure-results/
-          retention-days: 5
+          ref: gh-pages
+          path: gh-pages-dir
+
+
+      - name: Allure Report Action
+        uses: simple-elf/allure-report-action@v1.9
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
