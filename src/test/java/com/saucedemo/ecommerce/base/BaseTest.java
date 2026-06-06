@@ -16,7 +16,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
+    public void tearDown() {
         if (driver != null) {
 //            if (result.getStatus() == ITestResult.FAILURE) {
 //                String testCaseName = result.getMethod().getMethodName();

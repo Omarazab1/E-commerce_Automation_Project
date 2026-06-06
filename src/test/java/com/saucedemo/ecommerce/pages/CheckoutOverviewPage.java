@@ -14,6 +14,7 @@ public class CheckoutOverviewPage extends BasePage {
 
     // 2. Action للضغط على زرار Finish
     public void clickFinish() {
-        click(finishButton);
+        org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+        wait.until(org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(By.id("finish"))).click();
     }
 }

@@ -2,6 +2,7 @@ package com.saucedemo.ecommerce.testcases;
 
 import com.saucedemo.ecommerce.base.BaseTest;
 import com.saucedemo.ecommerce.pages.*;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

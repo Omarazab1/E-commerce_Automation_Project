@@ -14,6 +14,10 @@ public class CheckoutCompletePage extends BasePage {
     }
 
     public String getSuccessMessageText() {
-        return getText(successHeader);
+        org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+        org.openqa.selenium.WebElement successMessage = wait.until(
+                org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(By.className("complete-header"))
+        );
+        return successMessage.getText().trim();
     }
 }
