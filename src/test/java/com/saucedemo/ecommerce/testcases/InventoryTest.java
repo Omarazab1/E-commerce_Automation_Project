@@ -14,13 +14,13 @@ public class InventoryTest extends BaseTest {
     @Test
     public void testProductSortingPriceLowToHigh() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("visual_user", "secret_sauce");
+        loginPage.login("standard_user", "secret_sauce");
+        driver.get("https://www.saucedemo.com/inventory.html");
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.selectSortingOption("Price (low to high)");
-
         List<Double> actualPrices = inventoryPage.getAllProductPrices();
         List<Double> expectedPrices = new ArrayList<>(actualPrices);
-        Collections.sort(expectedPrices); // ترتيب تصاعدي تلقائي
+        Collections.sort(expectedPrices);
 
         System.out.println("Actual Prices from UI: " + actualPrices);
         System.out.println("Expected Sorted Prices: " + expectedPrices);
@@ -30,7 +30,7 @@ public class InventoryTest extends BaseTest {
     @Test
     public void testEndToEndPurchaseFlow() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login("visual_user", "secret_sauce");
 
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.addBackpackToCart();

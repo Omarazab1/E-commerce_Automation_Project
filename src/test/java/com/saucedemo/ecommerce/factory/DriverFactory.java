@@ -16,6 +16,13 @@ public class DriverFactory {
             case ("CHROME"):
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
+                org.openqa.selenium.chrome.ChromeOptions options = new org.openqa.selenium.chrome.ChromeOptions();
+                options.addArguments("--disable-features=PasswordLeakDetection");
+                java.util.Map<String, Object> prefs = new java.util.HashMap<>();
+                prefs.put("credentials_enable_service", false);
+                prefs.put("profile.password_manager_enabled", false);
+                options.setExperimentalOption("prefs", prefs);
+                driver = new org.openqa.selenium.chrome.ChromeDriver(options);
                 break;
             case ("FIREFOX"):
                 WebDriverManager.firefoxdriver().setup();

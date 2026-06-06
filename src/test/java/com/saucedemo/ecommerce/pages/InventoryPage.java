@@ -20,11 +20,15 @@ public class InventoryPage extends BasePage {
         super(driver);
     }
     public void selectSortingOption(String optionText) {
-        WebElement dropdownElement = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(productSortDropdown));
+        WebElement dropdownElement = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(productSortDropdown));
         Select select = new Select(dropdownElement);
-        select.selectByVisibleText(optionText); //  "Price (low to high)"
+        select.selectByVisibleText(optionText);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-
     public List<Double> getAllProductPrices() {
         List<WebElement> priceElements = driver.findElements(productPrices);
         //Its purpose: This is the empty basket we've prepared to clean up the prices and convert them into real numbers so we can compare them.
