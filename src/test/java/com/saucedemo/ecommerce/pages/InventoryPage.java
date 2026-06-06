@@ -13,6 +13,8 @@ public class InventoryPage extends BasePage {
 
     private final By productSortDropdown = By.className("product_sort_container");
     private final By productPrices = By.className("inventory_item_price");
+    private final By addToCartButton = By.id("add-to-cart-sauce-labs-backpack");
+    private final By cartIcon = By.className("shopping_cart_link");
 
     public InventoryPage(WebDriver driver) {
         super(driver);
@@ -33,5 +35,11 @@ public class InventoryPage extends BasePage {
             prices.add(Double.parseDouble(priceText));
         }
         return prices;
+    }
+    public void addBackpackToCart() {
+        click(addToCartButton);
+    }
+    public void clickCartIcon() {
+        click(cartIcon);
     }
 }
