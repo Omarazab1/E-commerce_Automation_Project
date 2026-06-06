@@ -24,7 +24,7 @@ jobs:
           cache: maven
 
       - name: Run Selenium Tests via Maven
-        run: mvn test -Dheadless=true
+        run: mvn clean test -Dheadless=true
 
       # سحب الـ History بأمان بدون ما يضرب لو الـ branch مش موجود لسه
       - name: Get Allure History
