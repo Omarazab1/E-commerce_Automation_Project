@@ -1,5 +1,6 @@
 package com.saucedemo.ecommerce.base;
 import com.saucedemo.ecommerce.factory.DriverFactory;
+import com.saucedemo.ecommerce.utils.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +13,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         driver = new DriverFactory().initializeDriver();
-        driver.get("https://www.saucedemo.com/");
+        driver.get(ConfigReader.getProperty("url"));
     }
 
     @AfterMethod

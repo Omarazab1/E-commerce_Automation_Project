@@ -2,6 +2,7 @@ package com.saucedemo.ecommerce.testcases;
 
 import com.saucedemo.ecommerce.base.BaseTest;
 import com.saucedemo.ecommerce.pages.*;
+import com.saucedemo.ecommerce.utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class InventoryTest extends BaseTest {
     @Test
     public void testProductSortingPriceLowToHigh() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(ConfigReader.getProperty("valid.username") , ConfigReader.getProperty("valid.password"));
         driver.get("https://www.saucedemo.com/inventory.html");
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.selectSortingOption("Price (low to high)");
@@ -31,7 +32,7 @@ public class InventoryTest extends BaseTest {
     @Test
     public void testEndToEndPurchaseFlow() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("visual_user", "secret_sauce");
+        loginPage.login(ConfigReader.getProperty("valid.username") , ConfigReader.getProperty("valid.password"));
 
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.addBackpackToCart();
@@ -39,7 +40,7 @@ public class InventoryTest extends BaseTest {
         CartPage cartPage = new CartPage(driver);
         cartPage.clickCheckout();
         CheckoutInformationPage infoPage = new CheckoutInformationPage(driver);
-        infoPage.fillInformation("Omar", "Essam", "12345");
+        infoPage.fillInformation(ConfigReader.getProperty("first.name") , ConfigReader.getProperty("last.name"),ConfigReader.getProperty("zip.code"));
         CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
         overviewPage.clickFinish();
         CheckoutCompletePage completePage = new CheckoutCompletePage(driver);
