@@ -5,7 +5,6 @@ on:
     branches: [ "main", "master" ]
 
 
-
 permissions:
   contents: write
 
@@ -27,27 +26,28 @@ jobs:
       - name: Run Selenium Tests via Maven
         run: mvn test -Dheadless=true
 
-
+      # سحب الـ History بأمان بدون ما يضرب لو الـ branch مش موجود لسه
       - name: Get Allure History
         uses: actions/checkout@v4
         if: always()
         with:
           ref: gh-pages
           path: gh-pages-dir
+        continue-on-error: true
 
-
+      # استخدام نسخة مستقرة ومجربة وبتشتغل بدون Docker ومشاكله
       - name: Allure Report Action
-        uses: simple-elf/allure-report-action@v1.9
+        uses: simple-elf/allure-report-action@master
         if: always()
         with:
           allure_results: allure-results
           allure_history: allure-history
           keep_reports: 20
 
-
+      # الـ Deploy المظبوط للفولدر النظيف
       - name: Deploy Allure Report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          publish_dir: ./allure-history
