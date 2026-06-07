@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","328","testInvalidPasswordLogin","Surefire suite","2026-06-07","passed","2026-06-07","com.saucedemo.ecommerce.testcases.LoginTest","Surefire test","com.saucedemo.ecommerce.testcases.LoginTest","testInvalidPasswordLogin"
+"","1415","testEndToEndPurchaseFlow","Surefire suite","2026-06-07","passed","2026-06-07","com.saucedemo.ecommerce.testcases.InventoryTest","Surefire test","com.saucedemo.ecommerce.testcases.InventoryTest","testEndToEndPurchaseFlow"
+"","1753","testProductSortingPriceLowToHigh","Surefire suite","2026-06-07","passed","2026-06-07","com.saucedemo.ecommerce.testcases.InventoryTest","Surefire test","com.saucedemo.ecommerce.testcases.InventoryTest","testProductSortingPriceLowToHigh"
+"","7","testFrameworkSetup","Surefire suite","2026-06-07","passed","2026-06-07","com.saucedemo.ecommerce.testcases.InitialTest","Surefire test","com.saucedemo.ecommerce.testcases.InitialTest","testFrameworkSetup"
+"","325","testSuccessfulLogin","Surefire suite","2026-06-07","passed","2026-06-07","com.saucedemo.ecommerce.testcases.LoginTest","Surefire test","com.saucedemo.ecommerce.testcases.LoginTest","testSuccessfulLogin"
+"","334","testLockedOutUserLogin","Surefire suite","2026-06-07","passed","2026-06-07","com.saucedemo.ecommerce.testcases.LoginTest","Surefire test","com.saucedemo.ecommerce.testcases.LoginTest","testLockedOutUserLogin"
